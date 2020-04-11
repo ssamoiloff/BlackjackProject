@@ -1,13 +1,25 @@
 package com.skilldistillery.blackjack;
 
+import java.util.Scanner;
+
 public class PlayerOne extends Player {
-	
+	private Scanner kb = new Scanner(System.in);
 	private BlackjackHand p1Hand = new BlackjackHand();
-	
-	public PlayerOne() {}
-	
+	private String name;
+
+	public PlayerOne() {
+	}
+
 	public PlayerOne(String name) {
-		super(name);
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public void addCard(Card card) {
@@ -16,6 +28,23 @@ public class PlayerOne extends Player {
 
 	public BlackjackHand getP1Hand() {
 		return p1Hand;
+	}
+
+	@Override
+	protected boolean hit() {
+		boolean hit = false;
+		String input;
+
+		System.out.print("Would you like to (H)it or (S)tay? > ");
+		input = kb.nextLine();
+		if (input.equals("H") || input.equals("h")) {
+			return true;
+		} else if (input.equals("S") || input.equals("s")) {
+			return false;
+		} else {
+			System.out.println();
+			return hit;
+		}
 	}
 
 }

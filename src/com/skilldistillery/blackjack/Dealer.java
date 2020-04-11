@@ -4,6 +4,7 @@ public class Dealer extends Player {
 	
 	private Deck deck;
 	private BlackjackHand dealerHand = new BlackjackHand();
+	private final String name = "Dealer";
 	
 	public Dealer() {
 		deck = new Deck();
@@ -11,6 +12,10 @@ public class Dealer extends Player {
 		deck.shuffle();
 	}
 	
+	public String getName() {
+		return name;
+	}
+
 	protected void getCard() {
 		deck.dealCard(dealerHand);
 	}
@@ -25,6 +30,16 @@ public class Dealer extends Player {
 
 	public BlackjackHand getDealerHand() {
 		return dealerHand;
+	}
+	
+	public int countCards() {
+		return deck.checkDeckSize();
+	}
+
+	@Override
+	protected boolean hit() {
+		
+		return false;
 	}
 
 }

@@ -17,5 +17,5 @@ public abstract class Player {
 		this.name = name;
 	}
 
-//	protected abstract void getHand();
+	protected abstract boolean hit();
 }
