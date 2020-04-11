@@ -9,8 +9,6 @@ public class Deck {
 
 	public Deck() {
 		cards = createDeck();
-		shuffle();
-		shuffle();
 	}
 
 	private List<Card> createDeck() {
@@ -33,6 +31,10 @@ public class Deck {
 
 	public Card dealCard() {
 		return cards.remove(0);
+	}
+	
+	public void dealCard(Hand hand) {
+		hand.addCard(cards.remove(0));
 	}
 
 	@Override

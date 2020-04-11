@@ -8,7 +8,8 @@ public class BlackjackApp {
 	}
 	private void launch() {
 		GameLogic gl = new GameLogic();
-//		gl.printDeck();
+		gl.dealCards();
+		gl.showHands();
 	}
 
 }

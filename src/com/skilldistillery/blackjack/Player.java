@@ -17,5 +17,5 @@ public abstract class Player {
 		this.name = name;
 	}
 
-	protected abstract BlackjackHand getHand();
+//	protected abstract void getHand();
 }

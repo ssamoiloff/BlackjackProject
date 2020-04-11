@@ -2,16 +2,20 @@ package com.skilldistillery.blackjack;
 
 public class PlayerOne extends Player {
 	
+	private BlackjackHand p1Hand = new BlackjackHand();
+	
 	public PlayerOne() {}
 	
 	public PlayerOne(String name) {
 		super(name);
 	}
 
-	@Override
-	public BlackjackHand getHand() {
-		// TODO Auto-generated method stub
-		return null;
+	public void addCard(Card card) {
+		p1Hand.addCard(card);
+	}
+
+	public BlackjackHand getP1Hand() {
+		return p1Hand;
 	}
 
 }

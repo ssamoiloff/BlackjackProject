@@ -1,8 +1,12 @@
 package com.skilldistillery.blackjack;
 
-public class BlackjackHand extends Hand {
+import java.util.ArrayList;
+import java.util.List;
 
-	public BlackjackHand() {}
+public class BlackjackHand extends Hand {
+	
+	public BlackjackHand() {
+	}
 	
 	@Override
 	public int getHandValue() {
