@@ -13,9 +13,9 @@ public abstract class Player {
 		return name;
 	}
 
-	public void setName(String name) {
+	protected void setName(String name) {
 		this.name = name;
 	}
 
-	public abstract BlackjackHand getHand();
+	protected abstract BlackjackHand getHand();
 }

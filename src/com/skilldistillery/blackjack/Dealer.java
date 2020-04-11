@@ -2,15 +2,13 @@ package com.skilldistillery.blackjack;
 
 public class Dealer extends Player {
 	
-	public Dealer() {}
+	private Deck deck;
 	
-	public Dealer(String name) {
-		super(name);
+	public Dealer() {
+		deck = new Deck();	
 	}
-	
 	@Override
-	public BlackjackHand getHand() {
-		// TODO Auto-generated method stub
+	protected BlackjackHand getHand() {
 		return null;
 	}
 

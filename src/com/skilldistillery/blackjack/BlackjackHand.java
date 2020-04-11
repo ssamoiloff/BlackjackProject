@@ -18,11 +18,5 @@ public class BlackjackHand extends Hand {
 		return false;
 	}
 	
-//	public boolean isHard() {
-//		return false;
-//	}
-//	
-//	public boolean isSoft() {
-//		return false;
-//	}
+	
 }

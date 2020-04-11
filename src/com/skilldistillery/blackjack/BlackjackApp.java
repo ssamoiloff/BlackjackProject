@@ -7,7 +7,8 @@ public class BlackjackApp {
 		bja.launch();
 	}
 	private void launch() {
-		
+		GameLogic gl = new GameLogic();
+//		gl.printDeck();
 	}
 
 }
