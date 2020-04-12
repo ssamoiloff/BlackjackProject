@@ -10,10 +10,18 @@ public class BlackjackApp {
 		GameLogic gl = new GameLogic();
 		Player d = gl.getD();
 		Player p1 = gl.getP1();
-		gl.dealerWins();
-//		gl.dealCards();
-//		gl.showHands();
-//		gl.hitOrStay(p1);
-//		gl.hitOrStay(d);
+		
+		gl.dealCards();
+		gl.showHands();
+		gl.playerTurn(p1);
+		gl.dealerTurn();
 	}
+	
+	/*
+	 * -Fix win logic-
+	 * If player busts, dealer wins after STAY.
+	 * If dealer > player, dealer wins.
+	 * TEST A BUNCH
+	 * 
+	 */
 }

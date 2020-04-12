@@ -60,64 +60,67 @@ public class GameLogic {
 	}
 
 	public void showDealerHand() {
-		System.out.println(d.getName() + "'s hand:\t" + d.getDealerHand());
+		System.out.println(d.getName() + "'s hand:\t" + d.getDealerHand() +
+					" ( Total: " + d.getDealerHand().getHandValue() + " )");
 	}
 
 	public void showP1Hand() {
-		System.out.println(p1.getName() + "'s hand:\t" + p1.getP1Hand());
+		System.out.println(p1.getName() + "'s hand:\t" + p1.getP1Hand() +
+				" ( Total: " + p1.getP1Hand().getHandValue() + " )");
 	}
 
 	public void checkDeck() {
 		System.out.println("Cards left in deck: " + d.countCards());
 	}
 
-	public void hitOrStay(Player player) {
+	public void playerTurn(Player player) { // args are for future multiplayer support
 		boolean hit = player.hit();
-
-		if (player.equals(p1)) {
-			if (hit == true) {
-				p1.addCard(d.dealP1Card());
-				System.out.println("\n\t---* " + p1.getName() + " HITS *---\n");
-			} else if (hit == false) {
-				System.out.println("\n\t---* " + p1.getName() + " STAYS *---\n");
+		while (hit == true) {
+			p1.addCard(d.dealP1Card());
+			System.out.println("\n\t---* " + p1.getName() + " HITS *---\n");
+			showP1Hand();
+			System.out.println();
+			if (p1.getP1Hand().isBust() == true) {
+				p1Bust();
+				hit = false;
+				return;
 			}
-			showHands();
-		} else if (player.equals(d)) {
-			if (hit == true) {
-				d.getCard();
-				System.out.println("\n\t---* " + d.getName() + " HITS *---\n");
-			} else if (hit == false) {
-				System.out.println("\n\t---* " + d.getName() + " STAYS *---\n");
-			}
-			showHands();
+			hit = player.hit();
 		}
-		checkIfBust();
+		if (hit == false) {
+			System.out.println("\n\t---* " + p1.getName() + " STAYS *---\n");
+		}
+		showHands();
 	}
 
 	public void dealerTurn() {
 		boolean hit = d.hit();
-		if (hit == true) {
+		while (hit == true) {
 			d.getCard();
 			System.out.println("\n\t---* " + d.getName() + " HITS *---\n");
-		} else if (hit == false) {
+			showDealerHand();
+			if (d.getDealerHand().isBust() == true) {
+				dealerBust();
+				hit = false;
+			}
+		}
+		if (hit == false) {
 			System.out.println("\n\t---* " + d.getName() + " STAYS *---\n");
 		}
 		showHands();
-		checkIfBust();
 	}
 
-	public void checkIfBust() {
-		if (p1.getP1Hand().isBust()) {
-			System.out.println("\t---* " + p1.getName() + " BUSTS! *---\n");
-		}
-		if (d.getDealerHand().isBust()) {
-			System.out.println("\t---* " + d.getName() + " BUSTS! *---\n");
-			p1Wins();
-		}
+	public void p1Bust() {
+		System.out.println("\n\t---* " + p1.getName() + " BUSTS! *---\n");
 	}
-
+	
+	public void dealerBust() {
+		System.out.println("\n\t---* " + d.getName() + " BUSTS! *---\n");
+		p1Wins();
+	}
+	
 	public void dealerWins() {
-		System.out.println("\t       HOUSE WINS");
+		System.out.println("\t      HOUSE WINS");
 		System.out.println("\n\t  **** GAME OVER ****");
 		System.exit(0);
 	}
