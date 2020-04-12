@@ -15,12 +15,21 @@ public class BlackjackHand extends Hand {
 	}
 	
 	public boolean isBlackjack() {
-		return false;
+		if (cards.size() == 2 && getHandValue() == 21) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 	public boolean isBust() {
-		return false;
+		if (getHandValue() > 21) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-	
 	
 }

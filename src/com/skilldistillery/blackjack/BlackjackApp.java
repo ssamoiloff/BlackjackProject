@@ -8,14 +8,12 @@ public class BlackjackApp {
 	}
 	private void launch() {
 		GameLogic gl = new GameLogic();
-		Player d = gl.d;
-		Player p1 = gl.p1;
-		
-		gl.dealCards();
-		gl.showHands();
-		gl.hitOrStay(p1);
-		gl.hitOrStay(d);
-		
+		Player d = gl.getD();
+		Player p1 = gl.getP1();
+		gl.dealerWins();
+//		gl.dealCards();
+//		gl.showHands();
+//		gl.hitOrStay(p1);
+//		gl.hitOrStay(d);
 	}
-
 }
