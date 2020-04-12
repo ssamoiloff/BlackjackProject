@@ -7,8 +7,11 @@ public class BlackjackHand extends Hand {
 	
 	@Override
 	public int getHandValue() {
-		
-		return 0;
+		int handValue = 0;
+		for (int card = 0; card < cards.size(); card++) {
+			handValue += cards.get(card).getValue();
+		}
+		return handValue;
 	}
 	
 	public boolean isBlackjack() {

@@ -38,8 +38,12 @@ public class Dealer extends Player {
 
 	@Override
 	protected boolean hit() {
-		
-		return false;
+		if (dealerHand.getHandValue() < 17) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 }

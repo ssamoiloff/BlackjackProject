@@ -22,16 +22,17 @@ public class GameLogic {
 	}
 	
 	public void showHands() {
-		System.out.println(d.getName() + ": " + d.getDealerHand());
-		System.out.println(p1.getName() + ": " + p1.getP1Hand());
+		showDealerHand();
+		showP1Hand();
+		System.out.println();
 	}
 	
 	public void showDealerHand() {
-		System.out.println(d.getName() + ": " + d.getDealerHand());
+		System.out.println(d.getName() + "'s hand:\t" + d.getDealerHand());
 	}
 	
 	public void showP1Hand() {
-		System.out.println(p1.getName() + ": " + p1.getP1Hand());
+		System.out.println(p1.getName() + "'s hand:\t" + p1.getP1Hand());
 	}
 	
 	public void checkDeck() {

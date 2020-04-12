@@ -13,8 +13,8 @@ public class BlackjackApp {
 		
 		gl.dealCards();
 		gl.showHands();
-		gl.checkDeck();
 		gl.hitOrStay(p1);
+		gl.hitOrStay(d);
 		
 	}
 
