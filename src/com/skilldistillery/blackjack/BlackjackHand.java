@@ -32,4 +32,11 @@ public class BlackjackHand extends Hand {
 		}
 	}
 	
+	public String oneCardHidden() {
+		String hidden = "[*HIDDEN*, ";
+		String shown = cards.get(1).toString() + "]";
+		String hand = hidden + shown;
+		return hand;
+	}
+	
 }

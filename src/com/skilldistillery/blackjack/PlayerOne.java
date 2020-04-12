@@ -35,9 +35,9 @@ public class PlayerOne extends Player {
 		
 		System.out.print("Would " + name + " like to (H)it or (S)tay? > ");
 		input = GameLogic.kb.nextLine();
-		if (input.equals("H") || input.equals("h")) {
+		if (input.equalsIgnoreCase("h") || input.equalsIgnoreCase("hit")) {
 			return true;
-		} else if (input.equals("S") || input.equals("s")) {
+		} else if (input.equalsIgnoreCase("s") || input.equalsIgnoreCase("stay")) {
 			return false;
 		} else {
 			return hit;

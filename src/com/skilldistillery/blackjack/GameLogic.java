@@ -53,15 +53,26 @@ public class GameLogic {
 		System.exit(0);
 	}
 
+	public void showHandsInitial() {
+		showDealerHandInitial();
+		showP1Hand();
+		System.out.println();
+	}
+	
 	public void showHands() {
 		showDealerHand();
 		showP1Hand();
 		System.out.println();
 	}
 
+	public void showDealerHandInitial() {
+		System.out.println(d.getName() + "'s hand:\t" + d.getDealerHand().oneCardHidden() +
+					" ( Total: ??? )");
+	}
+	
 	public void showDealerHand() {
 		System.out.println(d.getName() + "'s hand:\t" + d.getDealerHand() +
-					" ( Total: " + d.getDealerHand().getHandValue() + " )");
+				" ( Total: " + d.getDealerHand().getHandValue() + " )");
 	}
 
 	public void showP1Hand() {
@@ -86,11 +97,12 @@ public class GameLogic {
 				return;
 			}
 			hit = player.hit();
+			System.out.println();
+			showHands();
 		}
 		if (hit == false) {
-			System.out.println("\n\t---* " + p1.getName() + " STAYS *---\n");
+			System.out.println("\t---* " + p1.getName() + " STAYS *---\n");
 		}
-		showHands();
 	}
 
 	public void dealerTurn() {
@@ -102,12 +114,16 @@ public class GameLogic {
 			if (d.getDealerHand().isBust() == true) {
 				dealerBust();
 				hit = false;
+				return;
 			}
+			hit = d.hit();
+			System.out.println();
 		}
 		if (hit == false) {
 			System.out.println("\n\t---* " + d.getName() + " STAYS *---\n");
 		}
 		showHands();
+		findWinner();
 	}
 
 	public void p1Bust() {
