@@ -24,7 +24,7 @@ Upon launching the program, the user is greeted with a welcome banner. The game 
 	
 		♢♣♡♠♢♣♡♠~~~* BLACKJACK!!! Ally WINS! *~~~♠♡♣♢♠♡♣♢
 	
-					**** GAME OVER ****
+			**** GAME OVER ****
 	
 The beginning of the game displays both the dealer's and the player's hands, though the dealer's first card is hidden. This card is only revealed after the player is finished with their turn. The player is prompted whether to Hit or Stay. If the player hits, a message displays their choice, their updated hand is printed to the screen, and they are prompted once again to make they choice whether to Hit or Stay, provided they don't bust. If the player busts, a message displaying their player name along with "BUSTS!" is printed, and their turn is over. The player may hit as many times as they wish until they either decide to stay, or they bust. Their updated hand is printed after every Hit.
 
@@ -73,7 +73,7 @@ The player's win condition is: if their hand value is greater than the dealer's 
 			     Ally WINS!
 	
 	
-			  **** GAME OVER ****
+			**** GAME OVER ****
 	
 ### Technologies Used
 - Java SE13
