@@ -41,14 +41,14 @@ public class GameLogic {
 	public void p1Bj() {
 		showP1Hand();
 		System.out.println(
-				"\n\t" + chstr + chstr + "---* BLACKJACK!!! " + p1.getName() + " WINS! *---" + chstr2 + chstr2);
+				"\n\t" + chstr + chstr + "~~~* BLACKJACK!!! " + p1.getName() + " WINS! *~~~" + chstr2 + chstr2);
 		System.out.println("\n\t\t\t**** GAME OVER ****");
 		System.exit(0);
 	}
 
 	public void dealerBj() {
 		showDealerHand();
-		System.out.println("\n\t" + chstr + chstr + "---* BLACKJACK!!! House wins =( *---" + chstr2 + chstr2);
+		System.out.println("\n\t" + chstr + chstr + "~~~* BLACKJACK!!! House wins =( *~~~" + chstr2 + chstr2);
 		System.out.println("\n\t\t\t**** GAME OVER ****");
 		System.exit(0);
 	}
@@ -58,83 +58,85 @@ public class GameLogic {
 		showP1Hand();
 		System.out.println();
 	}
-	
+
 	public void showHands() {
 		showDealerHand();
 		showP1Hand();
-		System.out.println();
 	}
 
 	public void showDealerHandInitial() {
-		System.out.println(d.getName() + "'s hand:\t" + d.getDealerHand().oneCardHidden() +
-					" ( Total: ??? )");
+		System.out.println(d.getName() + "'s hand:\t " + d.getDealerHand().oneCardHidden() + " ( Total: ??? )");
 	}
-	
+
 	public void showDealerHand() {
-		System.out.println(d.getName() + "'s hand:\t" + d.getDealerHand() +
-				" ( Total: " + d.getDealerHand().getHandValue() + " )");
+		System.out.println(d.getName() + "'s hand:\t" + d.getDealerHand() + " ( Total: "
+				+ d.getDealerHand().getHandValue() + " )");
 	}
 
 	public void showP1Hand() {
-		System.out.println(p1.getName() + "'s hand:\t" + p1.getP1Hand() +
-				" ( Total: " + p1.getP1Hand().getHandValue() + " )");
-	}
-
-	public void checkDeck() {
-		System.out.println("Cards left in deck: " + d.countCards());
+		System.out.println(
+				p1.getName() + "'s hand:\t" + p1.getP1Hand() + " ( Total: " + p1.getP1Hand().getHandValue() + " )");
+		System.out.println();
 	}
 
 	public void playerTurn(Player player) { // args are for future multiplayer support
 		boolean hit = player.hit();
+		
 		while (hit == true) {
 			p1.addCard(d.dealP1Card());
 			System.out.println("\n\t---* " + p1.getName() + " HITS *---\n");
-			showP1Hand();
-			System.out.println();
 			if (p1.getP1Hand().isBust() == true) {
 				p1Bust();
 				hit = false;
 				return;
 			}
+			showP1Hand();
 			hit = player.hit();
-			System.out.println();
-			showHands();
 		}
 		if (hit == false) {
-			System.out.println("\t---* " + p1.getName() + " STAYS *---\n");
+			System.out.println("\n\t---* " + p1.getName() + " STAYS *---\n");
 		}
 	}
 
 	public void dealerTurn() {
+		int counter = 0;
+		showHands();
 		boolean hit = d.hit();
+		if (hit == true) {counter = 1;}
+		
 		while (hit == true) {
 			d.getCard();
-			System.out.println("\n\t---* " + d.getName() + " HITS *---\n");
-			showDealerHand();
+			System.out.println("\t---* " + d.getName() + " HITS *---\n");
 			if (d.getDealerHand().isBust() == true) {
 				dealerBust();
 				hit = false;
 				return;
 			}
+			showDealerHand();
 			hit = d.hit();
 			System.out.println();
 		}
-		if (hit == false) {
-			System.out.println("\n\t---* " + d.getName() + " STAYS *---\n");
+		if (hit == false && counter == 0) {
+			System.out.println("\t---* " + d.getName() + " STAYS *---\n");
+			showHands();
 		}
-		showHands();
+		if (counter == 1) {
+			System.out.println("\t---* " + d.getName() + " STAYS *---\n");
+			System.out.println();
+		}
 		findWinner();
 	}
 
 	public void p1Bust() {
-		System.out.println("\n\t---* " + p1.getName() + " BUSTS! *---\n");
+		showP1Hand();
+		System.out.println("\t---* " + p1.getName() + " BUSTS! *---\n");
 	}
-	
+
 	public void dealerBust() {
+		showDealerHand();
 		System.out.println("\n\t---* " + d.getName() + " BUSTS! *---\n");
-		p1Wins();
 	}
-	
+
 	public void dealerWins() {
 		System.out.println("\t      HOUSE WINS");
 		System.out.println("\n\t  **** GAME OVER ****");
@@ -148,10 +150,20 @@ public class GameLogic {
 	}
 
 	public void findWinner() {
-		if (p1.getP1Hand().getHandValue() > d.getDealerHand().getHandValue()) {
+		int p1total = p1.getP1Hand().getHandValue();
+		int dealerTotal = d.getDealerHand().getHandValue();
+		
+		if (p1.getP1Hand().isBust() == false && d.getDealerHand().isBust() == true) {
 			p1Wins();
-		} else {
+		}
+		else if (p1.getP1Hand().isBust() == true) {
 			dealerWins();
+		}
+		else if (p1total <= dealerTotal) {
+			dealerWins();
+		}
+		else {
+			p1Wins();
 		}
 	}
 
