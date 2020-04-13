@@ -1,6 +1,6 @@
-### Week 4 Skill Distillery - Blackjack Project
+# Week 4 Skill Distillery - Blackjack Project
 
-# Overview
+### Overview
 This program emulates a game of Blackjack with a single player and a dealer.
 
 
@@ -75,13 +75,13 @@ The player's win condition is: if their hand value is greater than the dealer's 
 	
 			  **** GAME OVER ****
 	
-# Technologies Used
+### Technologies Used
 - Java SE13
 - Eclipse IDE
 - MacOS Terminal
 - GitHub/Git
 
-# Lessons Learned
+### Lessons Learned
 * Trying to use the return value of a method in another class by calling the method *definitely runs that method* inside the class you're calling it in. For instance, attempting to get the boolean result of whether a player chooses to hit or not by calling that method from my game logic class put me in a situation where I was running code twice when I intended to only run it once. Even though it's obvious now, this was major headache for me.
 
 
